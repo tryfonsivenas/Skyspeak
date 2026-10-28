@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, the test sets or the results, please cite it as below."
+title: "SkySpeak: natural-language programming of an educational drone with path-level safety validation"
+authors:
+  - family-names: Sivenas
+    given-names: Tryfon
+    orcid: "https://orcid.org/0000-0002-4253-716X"
+    affiliation: "Department of Pedagogy and Primary Education, National and Kapodistrian University of Athens"
+version: 1.0.0
+date-released: 2026-10-28
+license: MIT
+repository-code: "https://github.com/tryfonsivenas/skyspeak"
+keywords:
+  - educational drones
+  - large language models
+  - natural-language programming
+  - robot safety
+  - Ryze Tello

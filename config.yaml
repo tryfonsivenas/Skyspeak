@@ -1,0 +1,33 @@
+# SkySpeak configuration
+# mode: "sim" runs everything in a simulator, "tello" flies a real Ryze/DJI Tello
+mode: sim
+
+llm:
+  # provider: mock | openai | anthropic | ollama
+  # "mock" is an offline rule-based parser (Greek and English), useful for testing
+  # and as a fallback when there is no internet in the classroom.
+  provider: mock
+  model: ""              # e.g. gpt-4o-mini, claude-sonnet-5-5, llama3.1:8b
+  api_key_env: ""        # name of the environment variable holding the key, e.g. OPENAI_API_KEY
+  ollama_url: http://localhost:11434
+  temperature: 0.0
+  timeout_seconds: 30
+
+safety:
+  max_height_cm: 200          # absolute ceiling above take-off point
+  max_radius_cm: 300          # max horizontal distance from take-off point
+  max_commands: 20            # max commands in one program
+  min_battery_percent: 25     # refuse to fly below this
+  require_takeoff_first: true
+  auto_land_at_end: true      # append "land" if the program does not end with it
+
+tello:
+  speed_cm_s: 50
+  command_pause_s: 0.5        # pause between commands
+
+logging:
+  directory: logs
+  telemetry_interval_s: 1.0
+
+ui:
+  language: el                # el | en

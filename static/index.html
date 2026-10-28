@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkySpeak</title>
+<style>
+  :root{--bg:#f4f6f9;--card:#fff;--ink:#1d2433;--mute:#6b7487;--line:#dfe3ea;--accent:#2563eb;
+        --ok:#16a34a;--warn:#d97706;--err:#dc2626;--blk-move:#3b82f6;--blk-turn:#8b5cf6;--blk-fly:#10b981;--blk-misc:#f59e0b}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  header{display:flex;align-items:center;gap:12px;padding:10px 18px;background:#0f172a;color:#fff;flex-wrap:wrap}
+  header h1{font-size:20px;margin:0;letter-spacing:.5px}
+  .badge{padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700}
+  .sim{background:#38bdf8;color:#082f49}.real{background:#ef4444;color:#fff}
+  header .sp{flex:1}
+  header label{font-size:13px;opacity:.85}
+  header input{width:90px;padding:5px 8px;border-radius:6px;border:0;font-size:14px}
+  #stat{font-size:13px;opacity:.9}
+  main{display:grid;grid-template-columns:minmax(320px,1fr) minmax(320px,1.15fr);gap:16px;padding:16px;max-width:1300px;margin:auto}
+  @media(max-width:860px){main{grid-template-columns:minmax(0,1fr);padding:12px 16px}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+  h2{font-size:15px;margin:0 0 10px;color:var(--mute);text-transform:uppercase;letter-spacing:.6px}
+  #chat{height:260px;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:4px}
+  .msg{max-width:88%;padding:8px 12px;border-radius:12px;font-size:15px;line-height:1.35}
+  .me{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:3px}
+  .bot{align-self:flex-start;background:#eef1f6;border-bottom-left-radius:3px}
+  .bot.err{background:#fde8e8;color:#7f1d1d}
+  form{display:flex;gap:8px;margin-top:10px}
+  textarea{flex:1;resize:none;height:64px;padding:10px;font-size:16px;border:1px solid var(--line);border-radius:10px;font-family:inherit}
+  button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 16px;font-weight:600}
+  .primary{background:var(--accent);color:#fff}
+  .primary:disabled{opacity:.45;cursor:not-allowed}
+  .examples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .examples button{background:#eef1f6;color:var(--ink);font-weight:500;font-size:13px;padding:6px 10px}
+  #blocks{display:flex;flex-direction:column;gap:5px;min-height:60px}
+  .blk{display:flex;align-items:center;gap:10px;color:#fff;border-radius:8px;padding:7px 12px;font-weight:600;font-size:15px;position:relative}
+  .blk .n{background:rgba(255,255,255,.25);border-radius:6px;padding:1px 7px;font-size:12px}
+  .blk.move{background:var(--blk-move)}.blk.turn{background:var(--blk-turn)}.blk.fly{background:var(--blk-fly)}.blk.misc{background:var(--blk-misc)}
+  .blk.active{outline:3px solid #0f172a;transform:translateX(6px)}
+  .blk.done{opacity:.55}
+  .blk .x{margin-left:auto;background:rgba(0,0,0,.2);color:#fff;padding:0 8px;border-radius:6px;font-size:13px}
+  .notes{font-size:14px;margin-top:8px}
+  .notes div{padding:4px 8px;border-radius:6px;margin-top:4px}
+  .notes .e{background:#fde8e8;color:#7f1d1d}.notes .w{background:#fef3c7;color:#78350f}
+  .row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .go{background:var(--ok);color:#fff;flex:1;font-size:17px;padding:13px}
+  .go:disabled{opacity:.4;cursor:not-allowed}
+  #emg{background:var(--err);color:#fff;font-size:18px;padding:14px;width:100%;margin-top:10px;letter-spacing:.5px;box-shadow:0 4px 0 #991b1b}
+  #emg:active{transform:translateY(2px);box-shadow:0 2px 0 #991b1b}
+  .views{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .views figure{margin:0}
+  .views figcaption{font-size:12px;color:var(--mute);text-align:center;margin-top:3px}
+  canvas{width:100%;aspect-ratio:1/1;background:#f8fafc;border:1px solid var(--line);border-radius:8px}
+  .fb{display:flex;gap:8px;margin-top:10px;align-items:center;font-size:14px;color:var(--mute);flex-wrap:wrap}
+  .fb button{background:#eef1f6;color:var(--ink);font-weight:500;padding:6px 10px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>✈ SkySpeak</h1>
+  <span id="mode" class="badge sim">ΠΡΟΣΟΜΟΙΩΣΗ</span>
+  <span id="prov" style="font-size:12px;opacity:.7"></span>
+  <span class="sp"></span>
+  <span id="stat">Μπαταρία: – · Ύψος: –</span>
+  <label>Κωδικός μαθητή <input id="code" placeholder="π.χ. S01" maxlength="12"></label>
+</header>
+
+<main>
+  <section>
+    <div class="card">
+      <h2>1 · Πες στο drone τι να κάνει</h2>
+      <div id="chat"><div class="msg bot">Γεια! Γράψε με δικά σου λόγια τι θέλεις να κάνει το drone. Θα σου δείξω το πρόγραμμα πριν πετάξει.</div></div>
+      <form id="f">
+        <textarea id="txt" placeholder="π.χ. Απογειώσου, πήγαινε 1 μέτρο μπροστά, στρίψε δεξιά και προσγειώσου"></textarea>
+        <button class="primary" id="send">Μετατροπή</button>
+      </form>
+      <div class="examples">
+        <button data-t="Απογειώσου, πήγαινε 1 μέτρο μπροστά, στρίψε δεξιά 90 μοίρες και προσγειώσου">Μπροστά και στροφή</button>
+        <button data-t="Κάνε ένα τετράγωνο με πλευρά 1 μέτρο">Τετράγωνο</button>
+        <button data-t="Ανέβα μισό μέτρο, κάνε μια πλήρη περιστροφή και τράβηξε φωτογραφία">Περιστροφή και φωτογραφία</button>
+        <button data-t="Κάνε ένα τρίγωνο 80 εκατοστά">Τρίγωνο</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>2 · Έλεγξε το πρόγραμμα</h2>
+      <div id="blocks"><div style="color:var(--mute);font-size:14px">Δεν υπάρχει πρόγραμμα ακόμη.</div></div>
+      <div class="notes" id="notes"></div>
+      <div class="views" style="margin-top:12px">
+        <figure><canvas id="top" width="400" height="400"></canvas><figcaption>Κάτοψη (από πάνω) · ▲ = κατεύθυνση εκκίνησης</figcaption></figure>
+        <figure><canvas id="side" width="400" height="400"></canvas><figcaption>Πλάγια όψη (ύψος ανά εντολή)</figcaption></figure>
+      </div>
+      <div class="row">
+        <button class="go" id="go" disabled>✔ Έγκριση και πτήση</button>
+      </div>
+      <button id="emg">■ ΕΚΤΑΚΤΗ ΠΡΟΣΓΕΙΩΣΗ</button>
+      <div class="fb">Έκανε αυτό που ήθελες;
+        <button data-n="yes">👍 Ναι</button><button data-n="partly">🤏 Περίπου</button><button data-n="no">👎 Όχι</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+let INFO = null, PROG = [], PATH = [], VALID = false, RUNNING = false, LIMITS = {};
+
+const KIND = c => ({takeoff:'fly',land:'fly',cw:'turn',ccw:'turn',photo:'misc',hover:'misc'})[c] || 'move';
+const ICON = {takeoff:'⬆',land:'⬇',up:'⤒',down:'⤓',forward:'↑',back:'↓',left:'←',right:'→',cw:'↻',ccw:'↺',hover:'⏸',photo:'📷'};
+
+async function api(path, body){
+  const r = await fetch(path, body===undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const d = await r.json().catch(()=>({}));
+  if(!r.ok) throw new Error(d.detail || ('Σφάλμα ' + r.status));
+  return d;
+}
+const code = () => $('#code').value.trim();
+try { $('#code').value = localStorage.getItem('sky_code') || ''; } catch(e){}
+$('#code').addEventListener('change', () => { try{ localStorage.setItem('sky_code', code()); }catch(e){} });
+
+function say(text, who='bot', cls=''){
+  const d = document.createElement('div'); d.className = `msg ${who} ${cls}`; d.textContent = text;
+  $('#chat').appendChild(d); $('#chat').scrollTop = 1e9;
+}
+
+function renderBlocks(step=-1){
+  const b = $('#blocks'); b.innerHTML = '';
+  if(!PROG.length){ b.innerHTML = '<div style="color:var(--mute);font-size:14px">Δεν υπάρχει πρόγραμμα ακόμη.</div>'; return; }
+  PROG.forEach((c,i) => {
+    const d = document.createElement('div');
+    d.className = `blk ${KIND(c.cmd)}` + (i===step?' active':'') + (step>=0 && i<step?' done':'');
+    d.innerHTML = `<span class="n">${i+1}</span><span>${ICON[c.cmd]||''}</span><span>${c.label}</span>`;
+    if(!RUNNING && c.cmd!=='takeoff' && c.cmd!=='land'){
+      const x = document.createElement('button'); x.className='x'; x.textContent='✕'; x.title='Αφαίρεση';
+      x.onclick = () => removeBlock(i); d.appendChild(x);
+    }
+    b.appendChild(d);
+  });
+}
+
+function renderNotes(errors=[], warnings=[]){
+  $('#notes').innerHTML = errors.map(e=>`<div class="e">⛔ ${e}</div>`).join('') + warnings.map(w=>`<div class="w">⚠ ${w}</div>`).join('');
+}
+
+function drawViews(step=-1){
+  const S = INFO ? INFO.safety : {max_radius_cm:300, max_height_cm:200};
+  // top view
+  let cv = $('#top'), g = cv.getContext('2d'), W = cv.width, R = S.max_radius_cm, sc = (W/2-20)/R;
+  g.clearRect(0,0,W,W);
+  g.fillStyle = '#fee2e2'; g.fillRect(0,0,W,W);
+  g.fillStyle = '#f8fafc'; g.beginPath(); g.arc(W/2,W/2,R*sc,0,7); g.fill();
+  g.strokeStyle = '#e2e8f0'; g.lineWidth = 1;
+  for(let m=-R; m<=R; m+=50){ const p = W/2+m*sc; g.beginPath(); g.moveTo(p,0); g.lineTo(p,W); g.moveTo(0,p); g.lineTo(W,p); g.stroke(); }
+  g.strokeStyle = '#fca5a5'; g.setLineDash([5,4]); g.beginPath(); g.arc(W/2,W/2,R*sc,0,7); g.stroke(); g.setLineDash([]);
+  g.fillStyle='#94a3b8'; g.font='12px system-ui'; g.fillText(`όριο ${R/100} μ.`, W/2+R*sc*0.72, W/2-R*sc*0.72);
+  const T = p => [W/2 - p.y*sc, W/2 - p.x*sc];   // forward = up, left = left
+  g.fillStyle='#0f172a'; g.beginPath(); g.moveTo(W/2,W/2-12); g.lineTo(W/2-7,W/2+6); g.lineTo(W/2+7,W/2+6); g.fill();
+  if(PATH.length){
+    g.save(); g.beginPath(); g.rect(0,0,W,W); g.clip();
+    g.lineWidth = 4; g.lineJoin='round';
+    for(let i=1;i<PATH.length;i++){
+      const [x0,y0]=T(PATH[i-1]), [x1,y1]=T(PATH[i]);
+      g.strokeStyle = (step>=0 && i-1<=step) ? '#16a34a' : '#2563eb';
+      g.beginPath(); g.moveTo(x0,y0); g.lineTo(x1,y1); g.stroke();
+    }
+    const cur = PATH[Math.min(PATH.length-1, step>=0 ? step+1 : PATH.length-1)];
+    const [cx,cy] = T(cur); const h = (cur.heading||0)*Math.PI/180;
+    g.save(); g.translate(cx,cy); g.rotate(-h);
+    g.fillStyle = '#f97316'; g.beginPath(); g.moveTo(0,-11); g.lineTo(-8,8); g.lineTo(8,8); g.fill(); g.restore();
+    PATH.forEach((p,i)=>{ if(p.cmd==='photo'){ const [x,y]=T(p); g.font='16px system-ui'; g.fillText('📷',x+6,y-6);} });
+    g.restore();
+  }
+  // side view: height per step
+  cv = $('#side'); g = cv.getContext('2d'); W = cv.width;
+  g.clearRect(0,0,W,W);
+  const H = S.max_height_cm, top = 20, bot = W-30, hs = (bot-top)/(H*1.15);
+  g.fillStyle='#fee2e2'; g.fillRect(0,0,W,bot - H*hs);
+  g.strokeStyle='#e2e8f0';
+  for(let z=0; z<=H*1.15; z+=50){ const y=bot-z*hs; g.beginPath(); g.moveTo(30,y); g.lineTo(W,y); g.stroke(); g.fillStyle='#94a3b8'; g.fillText(z+'',2,y+4); }
+  g.strokeStyle='#fca5a5'; g.setLineDash([5,4]); g.beginPath(); g.moveTo(30,bot-H*hs); g.lineTo(W,bot-H*hs); g.stroke(); g.setLineDash([]);
+  g.fillStyle='#64748b'; g.fillRect(30,bot,W-30,3);
+  if(PATH.length>1){
+    const dx = (W-50)/(PATH.length-1);
+    g.lineWidth=4;
+    for(let i=1;i<PATH.length;i++){
+      g.strokeStyle = (step>=0 && i-1<=step) ? '#16a34a' : '#8b5cf6';
+      g.beginPath(); g.moveTo(40+(i-1)*dx, bot-PATH[i-1].z*hs); g.lineTo(40+i*dx, bot-PATH[i].z*hs); g.stroke();
+    }
+    PATH.forEach((p,i)=>{ g.fillStyle='#0f172a'; g.beginPath(); g.arc(40+i*dx, bot-p.z*hs, 3.5, 0, 7); g.fill(); });
+  }
+}
+
+function setProgram(d){
+  PROG = d.program || []; PATH = d.path || []; VALID = !!d.ok;
+  renderBlocks(); renderNotes(d.errors, d.warnings); drawViews();
+  $('#go').disabled = !VALID || !PROG.length || RUNNING;
+}
+
+async function removeBlock(i){
+  const raw = PROG.filter((_,j)=>j!==i).map(({cmd,value})=> value===undefined?{cmd}:{cmd,value});
+  try { setProgram(await api('/api/validate', {program: raw})); } catch(e){ say(e.message,'bot','err'); }
+}
+
+$('#f').onsubmit = async ev => {
+  ev.preventDefault();
+  const text = $('#txt').value.trim(); if(!text) return;
+  if(RUNNING){ say('Περίμενε να τελειώσει η πτήση πριν δώσεις νέα εντολή.'); return; }
+  say(text,'me'); $('#txt').value=''; $('#send').disabled = true;
+  try {
+    const d = await api('/api/generate', {text, student_code: code()});
+    if(d.ok || !d.program.length) say(d.explanation || 'Έτοιμο.', 'bot', d.ok?'':'err');
+    else say('Το πρόγραμμα δεν είναι ασφαλές για πτήση. Δες τα κόκκινα μηνύματα δεξιά και άλλαξε την οδηγία σου.', 'bot', 'err');
+    setProgram(d);
+  } catch(e){ say(e.message,'bot','err'); }
+  $('#send').disabled = false; $('#txt').focus();
+};
+$('#txt').addEventListener('keydown', e => { if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); $('#f').requestSubmit(); } });
+document.querySelectorAll('.examples button').forEach(b => b.onclick = () => { $('#txt').value = b.dataset.t; $('#txt').focus(); });
+
+$('#go').onclick = async () => {
+  if(!VALID) return;
+  const raw = PROG.map(({cmd,value})=> value===undefined?{cmd}:{cmd,value});
+  try { await api('/api/execute', {program: raw, student_code: code()}); RUNNING = true; $('#go').disabled = true; renderBlocks(0); say('Το drone πετάει! Παρακολούθησε τα μπλοκ.'); }
+  catch(e){ say(e.message,'bot','err'); }
+};
+$('#emg').onclick = async () => { try { await api('/api/emergency', {}); say('Έκτακτη προσγείωση.','bot','err'); } catch(e){ say(e.message,'bot','err'); } };
+document.querySelectorAll('.fb button').forEach(b => b.onclick = async () => {
+  await api('/api/note', {student_code: code(), text: 'feedback:' + b.dataset.n}).catch(()=>{});
+  say('Ευχαριστώ! Καταγράφηκε.');
+});
+
+async function poll(){
+  try {
+    const s = await api('/api/status');
+    $('#stat').textContent = `Μπαταρία: ${s.battery ?? '–'}% · Ύψος: ${s.height ?? '–'} εκ.`;
+    if(RUNNING){ renderBlocks(s.step); drawViews(s.step); }
+    if(RUNNING && !s.running){
+      RUNNING = false; renderBlocks(PROG.length); drawViews(PROG.length);
+      say(s.error ? ('Σφάλμα κατά την πτήση: ' + s.error) : 'Η πτήση ολοκληρώθηκε.', 'bot', s.error?'err':'');
+      $('#go').disabled = !VALID;
+    }
+  } catch(e){}
+  setTimeout(poll, RUNNING ? 300 : 1500);
+}
+
+(async () => {
+  try {
+    INFO = await api('/api/info');
+    const real = INFO.mode === 'tello';
+    $('#mode').textContent = real ? 'ΠΡΑΓΜΑΤΙΚΗ ΠΤΗΣΗ' : 'ΠΡΟΣΟΜΟΙΩΣΗ';
+    $('#mode').className = 'badge ' + (real ? 'real' : 'sim');
+    $('#prov').textContent = 'μοντέλο: ' + (INFO.provider === 'mock' ? 'offline κανόνες' : `${INFO.provider} ${INFO.model||''}`);
+  } catch(e){}
+  drawViews(); poll();
+})();
+</script>
+</body>
+</html>
