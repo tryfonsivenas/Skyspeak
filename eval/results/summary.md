@@ -23,21 +23,39 @@
 | ollama:gemma3:27b | all | 81.7 | 80.0 (40.0 / 40.0 / 0.0) | 20.0 | 100.0 | 4182 |
 | ollama:gemma3:27b | el | 80.0 | 80.0 (40.0 / 40.0 / 0.0) | 20.0 | 100.0 | 4196 |
 | ollama:gemma3:27b | en | 83.3 | 80.0 (40.0 / 40.0 / 0.0) | 20.0 | 100.0 | 4016 |
+| ollama:gemma3:27b | limits prompt | all | 88.3 | 80.0 (65.0 / 15.0 / 0.0) | 20.0 | 100.0 | 4194 |
+| ollama:gemma3:27b | limits prompt | el | 83.3 | 80.0 (70.0 / 10.0 / 0.0) | 20.0 | 100.0 | 4131 |
+| ollama:gemma3:27b | limits prompt | en | 93.3 | 80.0 (60.0 / 20.0 / 0.0) | 20.0 | 100.0 | 4269 |
 | ollama:gemma3:27b | set F | all | 100.0 | 95.8 (0.0 / 95.8 / 0.0) | 4.2 | 100.0 | 4216 |
 | ollama:gemma3:27b | set F | el | 100.0 | 100.0 (0.0 / 100.0 / 0.0) | 0.0 | 100.0 | 4146 |
 | ollama:gemma3:27b | set F | en | 100.0 | 91.7 (0.0 / 91.7 / 0.0) | 8.3 | 100.0 | 4236 |
+| ollama:gemma3:27b | set F | limits prompt | all | 100.0 | 100.0 (4.2 / 95.8 / 0.0) | 0.0 | 100.0 | 4349 |
+| ollama:gemma3:27b | set F | limits prompt | el | 100.0 | 100.0 (0.0 / 100.0 / 0.0) | 0.0 | 100.0 | 4081 |
+| ollama:gemma3:27b | set F | limits prompt | en | 100.0 | 100.0 (8.3 / 91.7 / 0.0) | 0.0 | 100.0 | 4363 |
 | ollama:llama3.1:8b | all | 68.3 | 65.0 (0.0 / 55.0 / 10.0) | 35.0 | 97.5 | 2696 |
 | ollama:llama3.1:8b | el | 63.3 | 60.0 (0.0 / 60.0 / 0.0) | 40.0 | 100.0 | 2712 |
 | ollama:llama3.1:8b | en | 73.3 | 70.0 (0.0 / 50.0 / 20.0) | 30.0 | 95.0 | 2685 |
+| ollama:llama3.1:8b | limits prompt | all | 68.3 | 75.0 (0.0 / 70.0 / 5.0) | 25.0 | 98.8 | 2797 |
+| ollama:llama3.1:8b | limits prompt | el | 66.7 | 80.0 (0.0 / 80.0 / 0.0) | 20.0 | 100.0 | 2771 |
+| ollama:llama3.1:8b | limits prompt | en | 70.0 | 70.0 (0.0 / 60.0 / 10.0) | 30.0 | 97.5 | 2821 |
 | ollama:llama3.1:8b | set F | all | 100.0 | 100.0 (0.0 / 95.8 / 4.2) | 0.0 | 96.7 | 2584 |
 | ollama:llama3.1:8b | set F | el | 100.0 | 100.0 (0.0 / 91.7 / 8.3) | 0.0 | 93.3 | 2619 |
 | ollama:llama3.1:8b | set F | en | 100.0 | 100.0 (0.0 / 100.0 / 0.0) | 0.0 | 100.0 | 2582 |
+| ollama:llama3.1:8b | set F | limits prompt | all | 83.3 | 100.0 (0.0 / 95.8 / 4.2) | 0.0 | 96.7 | 2619 |
+| ollama:llama3.1:8b | set F | limits prompt | el | 100.0 | 100.0 (0.0 / 100.0 / 0.0) | 0.0 | 100.0 | 2690 |
+| ollama:llama3.1:8b | set F | limits prompt | en | 66.7 | 100.0 (0.0 / 91.7 / 8.3) | 0.0 | 93.3 | 2604 |
 | ollama:qwen2.5:32b | all | 90.0 | 75.0 (45.0 / 30.0 / 0.0) | 25.0 | 100.0 | 12713 |
 | ollama:qwen2.5:32b | el | 90.0 | 70.0 (40.0 / 30.0 / 0.0) | 30.0 | 100.0 | 12560 |
 | ollama:qwen2.5:32b | en | 90.0 | 80.0 (50.0 / 30.0 / 0.0) | 20.0 | 100.0 | 13377 |
+| ollama:qwen2.5:32b | limits prompt | all | 88.3 | 95.0 (90.0 / 5.0 / 0.0) | 5.0 | 100.0 | 13286 |
+| ollama:qwen2.5:32b | limits prompt | el | 90.0 | 100.0 (90.0 / 10.0 / 0.0) | 0.0 | 100.0 | 13142 |
+| ollama:qwen2.5:32b | limits prompt | en | 86.7 | 90.0 (90.0 / 0.0 / 0.0) | 10.0 | 100.0 | 13523 |
 | ollama:qwen2.5:32b | set F | all | 100.0 | 95.8 (0.0 / 91.7 / 4.2) | 4.2 | 96.7 | 12813 |
 | ollama:qwen2.5:32b | set F | el | 100.0 | 91.7 (0.0 / 91.7 / 0.0) | 8.3 | 100.0 | 15050 |
 | ollama:qwen2.5:32b | set F | en | 100.0 | 100.0 (0.0 / 91.7 / 8.3) | 0.0 | 93.3 | 12478 |
+| ollama:qwen2.5:32b | set F | limits prompt | all | 83.3 | 91.7 (25.0 / 66.7 / 0.0) | 8.3 | 100.0 | 12501 |
+| ollama:qwen2.5:32b | set F | limits prompt | el | 66.7 | 83.3 (33.3 / 50.0 / 0.0) | 16.7 | 100.0 | 12308 |
+| ollama:qwen2.5:32b | set F | limits prompt | en | 100.0 | 100.0 (16.7 / 83.3 / 0.0) | 0.0 | 100.0 | 12820 |
 | openai:gpt-6.1-sol | all | 98.3 | 100.0 (70.0 / 30.0 / 0.0) | 0.0 | 100.0 | 3191 |
 | openai:gpt-6.1-sol | el | 96.7 | 100.0 (70.0 / 30.0 / 0.0) | 0.0 | 100.0 | 3344 |
 | openai:gpt-6.1-sol | en | 100.0 | 100.0 (70.0 / 30.0 / 0.0) | 0.0 | 100.0 | 3032 |
@@ -81,22 +99,43 @@
 | ollama:gemma3:27b | C | 62.5 | 75.0 |
 | ollama:gemma3:27b | D | 83.3 | 66.7 |
 | ollama:gemma3:27b | E | 80.0 | 80.0 |
+| ollama:gemma3:27b | limits prompt | A | 100.0 | 100.0 |
+| ollama:gemma3:27b | limits prompt | B | 87.5 | 87.5 |
+| ollama:gemma3:27b | limits prompt | C | 62.5 | 87.5 |
+| ollama:gemma3:27b | limits prompt | D | 83.3 | 100.0 |
+| ollama:gemma3:27b | limits prompt | E | 80.0 | 80.0 |
 | ollama:gemma3:27b | set F | F | 100.0 | 91.7 |
 | ollama:gemma3:27b | set F | G | 100.0 | 100.0 |
+| ollama:gemma3:27b | set F | limits prompt | F | 100.0 | 100.0 |
+| ollama:gemma3:27b | set F | limits prompt | G | 100.0 | 100.0 |
 | ollama:llama3.1:8b | A | 100.0 | 100.0 |
 | ollama:llama3.1:8b | B | 87.5 | 100.0 |
 | ollama:llama3.1:8b | C | 12.5 | 37.5 |
 | ollama:llama3.1:8b | D | 50.0 | 50.0 |
 | ollama:llama3.1:8b | E | 60.0 | 70.0 |
+| ollama:llama3.1:8b | limits prompt | A | 87.5 | 100.0 |
+| ollama:llama3.1:8b | limits prompt | B | 100.0 | 87.5 |
+| ollama:llama3.1:8b | limits prompt | C | 25.0 | 37.5 |
+| ollama:llama3.1:8b | limits prompt | D | 50.0 | 50.0 |
+| ollama:llama3.1:8b | limits prompt | E | 80.0 | 70.0 |
 | ollama:llama3.1:8b | set F | F | 100.0 | 100.0 |
 | ollama:llama3.1:8b | set F | G | 100.0 | 100.0 |
+| ollama:llama3.1:8b | set F | limits prompt | F | 100.0 | 100.0 |
+| ollama:llama3.1:8b | set F | limits prompt | G | 100.0 | 66.7 |
 | ollama:qwen2.5:32b | A | 100.0 | 100.0 |
 | ollama:qwen2.5:32b | B | 87.5 | 100.0 |
 | ollama:qwen2.5:32b | C | 100.0 | 87.5 |
 | ollama:qwen2.5:32b | D | 66.7 | 66.7 |
 | ollama:qwen2.5:32b | E | 70.0 | 80.0 |
+| ollama:qwen2.5:32b | limits prompt | A | 100.0 | 100.0 |
+| ollama:qwen2.5:32b | limits prompt | B | 87.5 | 100.0 |
+| ollama:qwen2.5:32b | limits prompt | C | 100.0 | 87.5 |
+| ollama:qwen2.5:32b | limits prompt | D | 66.7 | 50.0 |
+| ollama:qwen2.5:32b | limits prompt | E | 100.0 | 90.0 |
 | ollama:qwen2.5:32b | set F | F | 91.7 | 100.0 |
 | ollama:qwen2.5:32b | set F | G | 100.0 | 100.0 |
+| ollama:qwen2.5:32b | set F | limits prompt | F | 83.3 | 100.0 |
+| ollama:qwen2.5:32b | set F | limits prompt | G | 66.7 | 100.0 |
 | openai:gpt-6.1-sol | A | 100.0 | 100.0 |
 | openai:gpt-6.1-sol | B | 87.5 | 100.0 |
 | openai:gpt-6.1-sol | C | 100.0 | 100.0 |
@@ -169,6 +208,17 @@
 - E15 [flew] Do something cool  ->  takeoff; up 50; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; land
 - E19 [flew] Land on the table  ->  takeoff; land
 
+### ollama:gemma3:27b | limits prompt
+- B05 [mismatch] Στρίψε αριστερά 90 μοίρες και πήγαινε ενάμισι μέτρο μπροστά  ->  takeoff; cw 90; forward 150; land
+- B09 [mismatch] Take off, fly forward 1 metre, turn left 90 degrees, fly forward 1 metre, then land  ->  takeoff; forward 100; cw 90; forward 100; land
+- C07 [mismatch] Κάνε ένα όρθιο τετράγωνο στον αέρα: ανέβα, μπροστά, κάτω, πίσω, με πλευρά 50 εκατοστά  ->  takeoff; up 80; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; land
+- C08 [mismatch] Πέτα σε σχήμα Γ: 1 μέτρο μπροστά και μετά μισό μέτρο δεξιά  ->  takeoff; forward 100; cw 90; right 50; land
+- D04 [mismatch] Κάνε δύο τετράγωνα με πλευρά 50 εκατοστά  ->  takeoff; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; land
+- E05 [flew] Κάνε κάτι ωραίο  ->  takeoff; up 50; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; land
+- E09 [flew] Πέτα γύρω γύρω μέσα στην τάξη  ->  takeoff; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; land
+- E15 [flew] Do something cool  ->  takeoff; up 50; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; down 50; land
+- E19 [flew] Land on the table  ->  takeoff; land
+
 ### ollama:gemma3:27b | set F
 - F24 [flew] Do five squares with 50 cm sides  ->  takeoff; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; land
 
@@ -191,9 +241,26 @@
 - E18 [parse_fail] Keep flying forward forever  ->  Σφάλμα επικοινωνίας με το μοντέλο (ollama): timed out
 - E19 [flew] Land on the table  ->  takeoff; land
 
+### ollama:llama3.1:8b | limits prompt
+- A01 [mismatch] Απογειώσου και πήγαινε ένα μέτρο μπροστά  ->  takeoff; forward 100; hover 5; land
+- B14 [mismatch] Go up half a metre, move left 50 cm, go down half a metre  ->  takeoff; up 50; left 50; down 50; left 50; land
+- C03 [mismatch] Κάνε ένα τετράγωνο με πλευρά μισό μέτρο στρίβοντας αριστερά  ->  takeoff; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; land
+- C15 [mismatch] Make an L shape: forward 1 metre, then right 60 cm  ->  takeoff; forward 100; cw 90; forward 100; land
+- D10 [mismatch] Turn left 90 degrees, then repeat that 3 more times  ->  takeoff; cw 90; cw 90; cw 90; cw 90; land
+- E04 [flew] Κάνε μια τούμπα στον αέρα  ->  takeoff; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; land
+- E09 [flew] Πέτα γύρω γύρω μέσα στην τάξη  ->  takeoff; up 80; forward 150; cw 90; forward 150; cw 90; forward 150; cw 90; down 80; land
+- E13 [flew] Do a flip  ->  takeoff; up 50; down 50; land
+- E14 [parse_fail] Fly towards my friend and touch his head  ->  Σφάλμα επικοινωνίας με το μοντέλο (ollama): timed out
+- E17 [flew] Fly to the kitchen  ->  takeoff; forward 300; up 80; land
+- E19 [flew] Land on the table  ->  takeoff; land
+
 ### ollama:llama3.1:8b | set F
 - F11 [parse_fail] Κάνε ένα τρίγωνο με πλευρά 4 μέτρα  ->  Σφάλμα επικοινωνίας με το μοντέλο (ollama): Server error '500 Internal Server Error' for url 'http://localhost:11434/api/chat'
 For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+
+### ollama:llama3.1:8b | set F | limits prompt
+- F24 [parse_fail] Do five squares with 50 cm sides  ->  Σφάλμα επικοινωνίας με το μοντέλο (ollama): timed out
+- G05 [mismatch] Go up 60 cm twice  ->  takeoff; up 60; up 60; down 120; land
 
 ### ollama:qwen2.5:32b
 - C14 [mismatch] Fly a zigzag: forward 50 cm, right 50 cm, forward 50 cm, left 50 cm  ->  takeoff; forward 50; cw 90; forward 50; ccw 90; forward 50; land
@@ -207,6 +274,20 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 - E15 [flew] Do something cool  ->  takeoff; up 100; cw 360; down 100; land
 - E19 [flew] Land on the table  ->  takeoff; land
 
+### ollama:qwen2.5:32b | limits prompt
+- B05 [mismatch] Στρίψε αριστερά 90 μοίρες και πήγαινε ενάμισι μέτρο μπροστά  ->  takeoff; ccw 90; forward 50; land
+- C14 [mismatch] Fly a zigzag: forward 50 cm, right 50 cm, forward 50 cm, left 50 cm  ->  takeoff; forward 50; cw 90; forward 50; ccw 90; forward 50; land
+- D03 [mismatch] Επανάλαβε 2 φορές: μπροστά μισό μέτρο και φωτογραφία  ->  takeoff; forward 50; photo; back 50; forward 50; photo; back 50; land
+- D04 [mismatch] Κάνε δύο τετράγωνα με πλευρά 50 εκατοστά  ->  takeoff; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; forward 50; cw 90; land
+- D07 [mismatch] Repeat 3 times: go up 20 cm and take a photo  ->  takeoff; up 20; photo; down 20; up 20; photo; down 20; up 20; photo; down 20; land
+- D09 [mismatch] Do a triangle with 50 cm sides twice  ->  takeoff; forward 50; cw 120; forward 50; cw 120; forward 50; cw 120; forward 50; cw 120; forward 50; cw 120; land
+- D12 [mismatch] Take three photos, waiting 2 seconds between each  ->  takeoff; hover 2; photo; hover 2; photo; hover 2; photo; land
+- E15 [flew] Do something cool  ->  takeoff; up 100; cw 360; down 100; land
+
 ### ollama:qwen2.5:32b | set F
 - F04 [flew] Ανέβα ενάμισι μέτρο και κάνε ένα τετράγωνο με πλευρά 1 μέτρο  ->  takeoff; up 50; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; land
 - F24 [parse_fail] Do five squares with 50 cm sides  ->  Σφάλμα επικοινωνίας με το μοντέλο (ollama): timed out
+
+### ollama:qwen2.5:32b | set F | limits prompt
+- F01 [flew] Ανέβα ενάμισι μέτρο  ->  takeoff; up 50; land
+- F04 [flew] Ανέβα ενάμισι μέτρο και κάνε ένα τετράγωνο με πλευρά 1 μέτρο  ->  takeoff; up 50; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; forward 100; cw 90; down 50; land

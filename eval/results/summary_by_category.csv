@@ -51,10 +51,24 @@ ollama:gemma3:27b,D,el,18,83.3
 ollama:gemma3:27b,D,en,18,66.7
 ollama:gemma3:27b,E,el,30,80.0
 ollama:gemma3:27b,E,en,30,80.0
+ollama:gemma3:27b | limits prompt,A,el,24,100.0
+ollama:gemma3:27b | limits prompt,A,en,24,100.0
+ollama:gemma3:27b | limits prompt,B,el,24,87.5
+ollama:gemma3:27b | limits prompt,B,en,24,87.5
+ollama:gemma3:27b | limits prompt,C,el,24,62.5
+ollama:gemma3:27b | limits prompt,C,en,24,87.5
+ollama:gemma3:27b | limits prompt,D,el,18,83.3
+ollama:gemma3:27b | limits prompt,D,en,18,100.0
+ollama:gemma3:27b | limits prompt,E,el,30,80.0
+ollama:gemma3:27b | limits prompt,E,en,30,80.0
 ollama:gemma3:27b | set F,F,el,36,100.0
 ollama:gemma3:27b | set F,F,en,36,91.7
 ollama:gemma3:27b | set F,G,el,9,100.0
 ollama:gemma3:27b | set F,G,en,9,100.0
+ollama:gemma3:27b | set F | limits prompt,F,el,36,100.0
+ollama:gemma3:27b | set F | limits prompt,F,en,36,100.0
+ollama:gemma3:27b | set F | limits prompt,G,el,9,100.0
+ollama:gemma3:27b | set F | limits prompt,G,en,9,100.0
 ollama:llama3.1:8b,A,el,24,100.0
 ollama:llama3.1:8b,A,en,24,100.0
 ollama:llama3.1:8b,B,el,24,87.5
@@ -65,10 +79,24 @@ ollama:llama3.1:8b,D,el,18,50.0
 ollama:llama3.1:8b,D,en,18,50.0
 ollama:llama3.1:8b,E,el,30,60.0
 ollama:llama3.1:8b,E,en,30,70.0
+ollama:llama3.1:8b | limits prompt,A,el,24,87.5
+ollama:llama3.1:8b | limits prompt,A,en,24,100.0
+ollama:llama3.1:8b | limits prompt,B,el,24,100.0
+ollama:llama3.1:8b | limits prompt,B,en,24,87.5
+ollama:llama3.1:8b | limits prompt,C,el,24,25.0
+ollama:llama3.1:8b | limits prompt,C,en,24,37.5
+ollama:llama3.1:8b | limits prompt,D,el,18,50.0
+ollama:llama3.1:8b | limits prompt,D,en,18,50.0
+ollama:llama3.1:8b | limits prompt,E,el,30,80.0
+ollama:llama3.1:8b | limits prompt,E,en,30,70.0
 ollama:llama3.1:8b | set F,F,el,36,100.0
 ollama:llama3.1:8b | set F,F,en,36,100.0
 ollama:llama3.1:8b | set F,G,el,9,100.0
 ollama:llama3.1:8b | set F,G,en,9,100.0
+ollama:llama3.1:8b | set F | limits prompt,F,el,36,100.0
+ollama:llama3.1:8b | set F | limits prompt,F,en,36,100.0
+ollama:llama3.1:8b | set F | limits prompt,G,el,9,100.0
+ollama:llama3.1:8b | set F | limits prompt,G,en,9,66.7
 ollama:qwen2.5:32b,A,el,24,100.0
 ollama:qwen2.5:32b,A,en,24,100.0
 ollama:qwen2.5:32b,B,el,24,87.5
@@ -79,10 +107,24 @@ ollama:qwen2.5:32b,D,el,18,66.7
 ollama:qwen2.5:32b,D,en,18,66.7
 ollama:qwen2.5:32b,E,el,30,70.0
 ollama:qwen2.5:32b,E,en,30,80.0
+ollama:qwen2.5:32b | limits prompt,A,el,24,100.0
+ollama:qwen2.5:32b | limits prompt,A,en,24,100.0
+ollama:qwen2.5:32b | limits prompt,B,el,24,87.5
+ollama:qwen2.5:32b | limits prompt,B,en,24,100.0
+ollama:qwen2.5:32b | limits prompt,C,el,24,100.0
+ollama:qwen2.5:32b | limits prompt,C,en,24,87.5
+ollama:qwen2.5:32b | limits prompt,D,el,18,66.7
+ollama:qwen2.5:32b | limits prompt,D,en,18,50.0
+ollama:qwen2.5:32b | limits prompt,E,el,30,100.0
+ollama:qwen2.5:32b | limits prompt,E,en,30,90.0
 ollama:qwen2.5:32b | set F,F,el,36,91.7
 ollama:qwen2.5:32b | set F,F,en,36,100.0
 ollama:qwen2.5:32b | set F,G,el,9,100.0
 ollama:qwen2.5:32b | set F,G,en,9,100.0
+ollama:qwen2.5:32b | set F | limits prompt,F,el,36,83.3
+ollama:qwen2.5:32b | set F | limits prompt,F,en,36,100.0
+ollama:qwen2.5:32b | set F | limits prompt,G,el,9,66.7
+ollama:qwen2.5:32b | set F | limits prompt,G,en,9,100.0
 openai:gpt-6.1-sol,A,el,24,100.0
 openai:gpt-6.1-sol,A,en,24,100.0
 openai:gpt-6.1-sol,B,el,24,87.5
